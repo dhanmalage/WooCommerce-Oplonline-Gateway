@@ -1,9 +1,9 @@
 <?php
 
 /*
-Plugin Name: WooCommerce Oplonline Gateway
+Plugin Name: WooCommerce OPL online Payment Gateway
 Plugin URI:  https://github.com/dmmdust/WooCommerce-Oplonline-Gateway
-Description: Oplonline Payment gateway plugin for woocommerce
+Description: OPL online Payment gateway plugin for woocommerce
 Version:     1.0
 Author:      Dhananjaya Maha Malage
 Author URI:  http://whenalive.com/
@@ -11,18 +11,18 @@ Text Domain: wc-oplonline
 Domain Path: /languages
 License:     GPL2
 
-WooCommerce Oplonline is free software: you can redistribute it and/or modify
+WooCommerce OPL online Payment Gateway is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 2 of the License, or
 any later version.
 
-WooCommerce Oplonline is distributed in the hope that it will be useful,
+WooCommerce OPL online Payment Gateway is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with WooCommerce Oplonline. If not, see {License URI}.
+along with WooCommerce OPL online Payment Gateway. If not, see {License URI}.
 */
 
 /**

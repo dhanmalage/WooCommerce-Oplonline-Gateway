@@ -11,13 +11,13 @@ class WC_Gateway_Woocommerce_Oplonline extends WC_Payment_Gateway {
         $this->id = "wc_oplonline";
 
         // The Title shown on the top of the Payment Gateways Page next to all the other Payment Gateways
-        $this->method_title = __( "Oplonline", 'wc-oplonline' );
+        $this->method_title = __( "OPL online Payment Gateway", 'wc-oplonline' );
 
         // The description for this Payment Gateway, shown on the actual Payment options page on the backend
-        $this->method_description = __( "Oplonline Payment Gateway Plug-in for WooCommerce", 'wc-oplonline' );
+        $this->method_description = __( "OPL online Payment Gateway Plug-in for WooCommerce", 'wc-oplonline' );
 
         // The title to be used for the vertical tabs that can be ordered top to bottom
-        $this->title = __( "Oplonline", 'wc-oplonline' );
+        $this->title = __( "OPL online Payment Gateway", 'wc-oplonline' );
 
         // If you want to show an image next to the gateway's name on the frontend, enter a URL to an image.
         $this->icon = null;
@@ -68,7 +68,7 @@ class WC_Gateway_Woocommerce_Oplonline extends WC_Payment_Gateway {
                 'title'		=> __( 'Title', 'wc-oplonline' ),
                 'type'		=> 'text',
                 'desc_tip'	=> __( 'Payment title the customer will see during the checkout process.', 'wc-oplonline' ),
-                'default'	=> __( 'Oplonline', 'wc-oplonline' ),
+                'default'	=> __( 'OPL online Payment Gateway', 'wc-oplonline' ),
             ),
             'description' => array(
                 'title'		=> __( 'Description', 'wc-oplonline' ),
@@ -84,7 +84,7 @@ class WC_Gateway_Woocommerce_Oplonline extends WC_Payment_Gateway {
                 'default'	=> __( '', 'wc-oplonline' ),
             ),
             'environment' => array(
-                'title'		=> __( 'Oplonline Test Mode', 'wc-oplonline' ),
+                'title'		=> __( 'OPL online Test Mode', 'wc-oplonline' ),
                 'label'		=> __( 'Enable Test Mode', 'wc-oplonline' ),
                 'type'		=> 'checkbox',
                 'description' => __( 'Place the payment gateway in test mode. only if you have a test payment url', 'wc-oplonline' ),
@@ -93,7 +93,7 @@ class WC_Gateway_Woocommerce_Oplonline extends WC_Payment_Gateway {
             'test_payment_url' => array(
                 'title'		=> __( 'Test Payment URL', 'wc-oplonline' ),
                 'type'		=> 'text',
-                'desc_tip'	=> __( 'Test Payment URL provided by Oplonline', 'wc-oplonline' ),
+                'desc_tip'	=> __( 'Test Payment URL provided by OPL online', 'wc-oplonline' ),
                 'default'	=> __( '', 'wc-oplonline' ),
             )
         );
@@ -113,12 +113,18 @@ class WC_Gateway_Woocommerce_Oplonline extends WC_Payment_Gateway {
         // Decide which URL to post to
         $environment_url = ( "FALSE" == $environment ) ? $this->active_payment_url : $this->test_payment_url;
 
+		if($customer_order->user_id){
+			$inv_account = $customer_order->user_id;
+		}else{
+			$inv_account = "guest";
+		}
+		
         // This is where the fun stuff begins
         $payload = array(
             "fullname=" . $customer_order->billing_first_name . " " . $customer_order->billing_last_name,
             "telephone=" . $customer_order->billing_phone,
             "email=" . $customer_order->billing_email,
-            "invoice[1][account]=" . $customer_order->user_id,
+            "invoice[1][account]=" . $inv_account,
             "invoice[1][reference]=" . str_replace( "#", "", $customer_order->get_order_number() ),
             "invoice[1][amount]=" . $customer_order->order_total
         );
